@@ -1,0 +1,29 @@
+{
+  "name": "london-mini-guide-server",
+  "version": "1.0.0",
+  "description": "Server side app for london mini guide",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sirpfaira/london-mini-guide-server.git"
+  },
+  "author": "sirpfaira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sirpfaira/london-mini-guide-server/issues"
+  },
+  "homepage": "https://github.com/sirpfaira/london-mini-guide-server#readme",
+  "keywords": [
+    "node"
+  ],
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
