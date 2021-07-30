@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 app.use(express.json());
+var cors = require('cors');
+app.use(cors());
 const STRATFORD = require('./data/Stratford.json');
 const HARROW = require('./data/Harrow.json');
 const HEATHROW = require('./data/HeathRow.json');
@@ -28,6 +30,11 @@ app.get('/', (req, res) => {
     );
 });
 
+app.get('/cities', (req, res) => {
+  const cities = CITIES.map((city) => city.name);
+  res.status(200).json(cities);
+});
+
 app.get('/:city/:category', (req, res) => {
   const { city, category } = req.params;
 
@@ -44,7 +51,6 @@ app.get('/:city/:category', (req, res) => {
             `The category "${category}" for "${city}" city was not found in our database!`
           );
       }
-      res.status(200).json(Stratford.pharmacies);
     } else {
       res
         .status(404)
@@ -55,4 +61,10 @@ app.get('/:city/:category', (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || 3000, () => console.log('Server started...'));
+app.get('/:city', (req, res) => {
+  res.status(400).send(`You should provide both city and category!`);
+});
+
+const listener = app.listen(process.env.PORT || 3000, function () {
+  console.log('Your app is listening on port ' + listener.address().port);
+});
